@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Gaming Pro",
+    "price": 1500,
+    "description": "Potente laptop para gaming con procesador Intel i7, 16GB RAM y tarjeta gráfica RTX 3060.",
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400"
+  },
+  {
+    "id": 2,
+    "name": "Smartphone Galaxy S23",
+    "price": 900,
+    "description": "Teléfono inteligente con cámara de 50MP, pantalla AMOLED y batería de larga duración.",
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400"
+  },
+  {
+    "id": 3,
+    "name": "Auriculares Inalámbricos",
+    "price": 200,
+    "description": "Auriculares Bluetooth con cancelación de ruido y sonido de alta calidad.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+  },
+  {
+    "id": 4,
+    "name": "Monitor 4K Ultra HD",
+    "price": 400,
+    "description": "Monitor de 27 pulgadas con resolución 4K, ideal para diseño y gaming.",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400"
+  },
+  {
+    "id": 5,
+    "name": "Teclado Mecánico RGB",
+    "price": 120,
+    "description": "Teclado gaming con switches mecánicos y iluminación RGB personalizable.",
+    "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400"
+  },
+  {
+    "id": 6,
+    "name": "Mouse Gaming Óptico",
+    "price": 80,
+    "description": "Mouse ergonómico con sensor óptico de alta precisión y botones programables.",
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400"
+  }
+]
