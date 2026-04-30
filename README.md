@@ -1,4 +1,4 @@
-# Pre-Entrega Proyecto Salazar
+# pre-entrega-salazar
 
 Este es el proyecto de pre-entrega para el sitio web de e-commerce TechStore.
 
