@@ -60,8 +60,9 @@ Para alojar en Netlify o Vercel:
    - Build command: `npm run build`
    - Output directory: `dist`
 
-### URL de producción
-🚀 **Sitio en vivo**: https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app
+## URL de Producción
+
+🚀 **Sitio en vivo**: [Pre-Entrega Salazar](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)
 
 Accede desde cualquier navegador para probar la aplicación completa.
 
@@ -117,7 +118,7 @@ src/
 
 ## Autor
 
-Proyecto desarrollado por [Tu Nombre] para la pre-entrega del curso de React.
+Proyecto desarrollado por Matias Salazar para la pre-entrega del curso de React.
 
 ## Notas Adicionales
 
@@ -126,9 +127,6 @@ Proyecto desarrollado por [Tu Nombre] para la pre-entrega del curso de React.
 - El estado del carrito se mantiene durante la sesión usando Context API
 - Diseño responsive que funciona en móviles, tablets y desktop
 
-1. Construye el proyecto: `npm run build`
-2. Sube la carpeta `dist` a Netlify o Vercel
+## Licencia
 
-URL del sitio: [Agregar URL después de desplegar]
-
-Repositorio GitHub: [Agregar enlace al repo]
+Este proyecto está disponible bajo licencia MIT.
