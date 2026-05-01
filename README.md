@@ -61,8 +61,9 @@ Para alojar en Netlify o Vercel:
    - Output directory: `dist`
 
 ### URL de producción
-- Una vez desplegado, tu sitio debería estar disponible en la URL que Vercel te da.
-- Si ya tienes la URL, reemplaza esta línea por la dirección final de producción.
+🚀 **Sitio en vivo**: https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app
+
+Accede desde cualquier navegador para probar la aplicación completa.
 
 ## Uso de la Aplicación
 
