@@ -1,4 +1,4 @@
-# pre-entrega-salazar
+# Pre-Entrega Proyecto Salazar
 
 Este es el proyecto de pre-entrega para el sitio web de e-commerce TechStore.
 
@@ -59,6 +59,10 @@ Para alojar en Netlify o Vercel:
    - Vercel detectará automáticamente que es un proyecto Vite
    - Build command: `npm run build`
    - Output directory: `dist`
+
+### URL de producción
+- Una vez desplegado, tu sitio debería estar disponible en la URL que Vercel te da.
+- Si ya tienes la URL, reemplaza esta línea por la dirección final de producción.
 
 ## Uso de la Aplicación
 
