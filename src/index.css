@@ -55,11 +55,27 @@ footer {
   text-align: center;
 }
 
+footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.footer-info,
+.footer-team {
+  max-width: 100%;
+}
+
+.footer-team h4 {
+  margin-bottom: 1rem;
+}
+
 .team-cards {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .team-card {
@@ -67,24 +83,57 @@ footer {
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .team-card img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.team-card h5 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.team-card p {
+  margin: 0;
+  color: #dcdcdc;
+  font-size: 0.95rem;
+}
+
+.team-card a {
+  color: #2196F3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.team-card a:hover {
+  text-decoration: underline;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  justify-items: center;
 }
 
 .product-card {
   background-color: #ffffff;
   border-radius: 8px;
   padding: 1rem;
-  margin: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s;
   color: #333;
+  max-width: 300px;
+  text-align: center;
 }
 
 .product-card:hover {
@@ -96,6 +145,32 @@ footer {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.product-card button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.product-card button:hover {
+  background-color: #1976D2;
 }
 
 button {
