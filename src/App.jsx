@@ -4,14 +4,14 @@ import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 
-// IMPORTS EXACTOS DE TU CARPETA PAGES
+// IMPORTS DE TUS PAGINAS
 import Home from './pages/Home';
-import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import GestionProductos from './pages/GestionProductos';
+import ProductsNacionales from './pages/ProductsNacionales';
 
 // IMPORT DE CUPONES DESDE COMPONENTS
 import GestionCupones from './components/GestionCupones'; 
@@ -24,11 +24,13 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
-                {/* Al entrar al sitio carga la página Home (el Inicio) */}
+                {/* Al entrar al sitio carga la página Home */}
                 <Route index element={<Home />} /> 
                 
-                {/* El resto de las secciones linkeadas a tu Header */}
-                <Route path="/productos" element={<Products />} />
+                {/* 🚨 EL CAMBIO CLAVE: Ahora cuando entres a /productos va a cargar 
+                    tu componente nuevo con buscador, styled-components y paginación */}
+                <Route path="/productos" element={<ProductsNacionales />} />
+                
                 <Route path="/item/:id" element={<ProductDetail />} />
                 <Route path="/carrito" element={<Cart />} />
                 <Route path="/login" element={<Login />} />

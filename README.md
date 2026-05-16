@@ -1,132 +1,61 @@
-# Pre-Entrega Proyecto Salazar
+# ⚡ TechStore - Trabajo Final de React 🇦🇷🛒
 
-Este es el proyecto de pre-entrega para el sitio web de e-commerce TechStore.
+¡Bienvenido a la versión final de **TechStore**! Este proyecto es la entrega final optimizada para el curso de React de **Talento Lab**. Se trata de un eCommerce completamente funcional, responsivo, accesible y administrable en tiempo real gracias a la integración con Firebase.
 
-## Descripción
+## 🚀 URL de Producción (Sitio en Vivo)
+El proyecto se encuentra desplegado y listo para producción en:
+👉 **[TechStore en Vercel](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)** *(Nota: Recordá actualizar este link si re-desplegaste la versión final)*
 
-TechStore es una tienda online de productos tecnológicos que ofrece una experiencia de compra completa con catálogo de productos, carrito de compras y navegación intuitiva.
+---
 
-## Características
+## ⚙️ Características Destacadas y Requerimientos Cumplidos
 
-- **Diseño moderno**: Interfaz atractiva con colores profesionales y diseño responsivo
-- **Catálogo completo**: 6 productos tecnológicos con imágenes de alta calidad
-- **Carrito funcional**: Sistema de carrito con Context API para estado global
-- **Navegación fluida**: Ruteo con React Router sin recargas de página
-- **Equipo destacado**: Información del equipo con fotos y roles
-- **Responsive**: Diseño adaptable a diferentes dispositivos
+### 📌 1. Gestión del Carrito y Autenticación de Usuarios
+* **Carrito Global (`Context API`):** Implementación de `CartContext` y `CartProvider` para agregar, disminuir, eliminar individuales y vaciar el carrito manteniendo el estado global de la compra de forma fluida.
+* **Autenticación con Firebase (`AuthContext`):** Sistema centralizado para manejar el estado de login/registro conectado a **Firebase Authentication**.
+* **Rutas Protegidas y Menú Dinámico:** El `Layout` oculta el acceso al Panel Admin y Creador de Cupones si el usuario no está logueado. Al presionar **"Salir"**, se limpia la sesión y el sistema redirige automáticamente a la Home (`/`) evitando cuelgues visuales.
 
-## Tecnologías Utilizadas
+### 📌 2. CRUD de Productos en Tiempo Real con Firebase
+* **Base de Datos en la Nube:** Migración completa del catálogo local a **Firebase Firestore**.
+* **Panel de Control de Administrador:** Formulario controlado con validaciones para crear productos nuevos, editar stock/precios actuales y dar de baja artículos.
+* **Experiencia de Usuario (UX):** Mensajes e indicadores de carga ("Spinners") durante los viajes de la API de Firebase y modales de confirmación interactivos antes de eliminar cualquier producto de la base de datos.
 
-- React 18
-- React Router DOM
-- Context API
-- Vite
-- CSS moderno
+### 📌 3. Optimización de Diseño y Responsividad
+* **Maquetación Mobile-First:** Uso del sistema de grillas responsivas de **React-Bootstrap** para garantizar una visualización óptima en celulares, tablets y computadoras de escritorio.
+* **Componentes Modulares:** Estilización avanzada mediante **styled-components** para mantener el código CSS limpio, aislado y escalable (aplicado en el buscador interactivo y la botonera de navegación).
+* **Claridad Visual:** Inclusión de iconos dinámicos a través de la librería **React Icons**.
 
-## Requerimientos Cumplidos
+### 📌 4. Funcionalidades Avanzadas de Búsqueda y Paginación
+* **Filtro en Tiempo Real:** Barra de búsqueda interactiva estilizada que filtra los productos por nombre a medida que el usuario escribe, reiniciando la paginación para evitar desbordes.
+* **Paginador Inteligente:** Lógica matemática (`.slice()`) para fragmentar el catálogo extenso mostrando **6 productos por página**, optimizando los tiempos de renderizado en dispositivos móviles.
 
-- ✅ Estructura de carpetas organizada
-- ✅ Componente Layout con Header, nav y Footer
-- ✅ Footer con información de empresa y tarjetas de 3 personas del equipo
-- ✅ Catálogo de productos cargado desde productos.json usando useEffect y fetch
-- ✅ Componente Item reutilizable con diseño de tarjetas
-- ✅ Sistema de ruteo con react-router-dom
-- ✅ Rutas: /, /productos, /producto/:id, /carrito
-- ✅ NavBar con Link y CartWidget con indicador numérico
-- ✅ Context API para gestión del carrito
-- ✅ Agregar productos al carrito desde vista de detalle
-- ✅ CartWidget actualizado en tiempo real
-- ✅ Vista de carrito mostrando productos con total
+### 📌 5. SEO y Accesibilidad (Rúbrica Exclusiva)
+* **SEO Dinámico:** Implementación de **React Helmet Async** para inyectar dinámicamente etiquetas `<title>` personalizadas con emojis (TechStore | Productos Nacionales 🇦🇷🛒) y meta descriptions en cada sección.
+* **Accesibilidad Web:** Uso estricto de atributos `aria-label` en inputs y botones para garantizar una navegación accesible.
 
-## Instalación
+---
 
-1. Clona el repositorio
-2. Ejecuta `npm install`
-3. Ejecuta `npm run dev` para desarrollo
-
-## Despliegue
-
-Para alojar en Netlify o Vercel:
-
-1. **Netlify**:
-   - Conecta tu repositorio de GitHub
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - ¡Listo! Netlify detectará automáticamente la configuración
-
-2. **Vercel**:
-   - Conecta tu repositorio de GitHub
-   - Vercel detectará automáticamente que es un proyecto Vite
-   - Build command: `npm run build`
-   - Output directory: `dist`
-
-## URL de Producción
-
-🚀 **Sitio en vivo**: [Pre-Entrega Salazar](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)
-
-Accede desde cualquier navegador para probar la aplicación completa.
-
-## Uso de la Aplicación
-
-### Navegación
-
-- **Inicio (/)**: Página principal con bienvenida
-- **Productos (/productos)**: Catálogo completo de productos
-- **Detalle de Producto (/producto/:id)**: Vista detallada con opción de agregar al carrito
-- **Carrito (/carrito)**: Gestión completa del carrito de compras
-
-### Funcionalidades del Carrito
-
-- Agregar productos desde la vista de detalle
-- Aumentar/disminuir cantidades con botones + y -
-- Eliminar productos individuales
-- Vaciar carrito completo
-- Cálculo automático de totales
-- Contador en tiempo real en el header
-
-## Estructura del Proyecto
+## 📂 Estructura Final del Proyecto
 
 ```bash
 src/
 ├── components/
-│   ├── Header.jsx          # Navegación principal
-│   ├── Footer.jsx          # Información de empresa y equipo
-│   ├── Layout.jsx          # Layout general
-│   ├── Item.jsx            # Tarjeta de producto
-│   ├── ItemListContainer.jsx # Contenedor del catálogo
-│   └── CartWidget.jsx      # Widget del carrito
+│   ├── Layout.jsx          # Estructura fija (Navbar con seguridad + Footer)
+│   ├── ItemListContainer.jsx # Contenedor del catálogo responsivo
+│   ├── Item.jsx            # Tarjeta individual de producto
+│   ├── CartWidget.jsx      # Indicador numérico del carrito en el Header
+│   └── GestionCupones.jsx  # Componente para el manejo de tickets de descuento
 ├── context/
-│   └── CartContext.jsx     # Estado global del carrito
+│   ├── CartContext.jsx     # Estado global del carrito (Context API)
+│   └── AuthContext.jsx     # Estado de autenticación global de Firebase
 ├── pages/
-│   ├── Home.jsx            # Página de inicio
-│   ├── Products.jsx        # Página de productos
-│   ├── ProductDetail.jsx   # Detalle de producto
-│   └── Cart.jsx            # Página del carrito
-├── data/
-│   └── productos.json      # Datos de productos
-├── App.jsx                 # Componente principal con rutas
-├── main.jsx                # Punto de entrada
-└── index.css               # Estilos globales
-```
-
-## Scripts Disponibles
-
-- `npm run dev` - Inicia servidor de desarrollo
-- `npm run build` - Construye para producción
-- `npm run lint` - Ejecuta ESLint
-- `npm run preview` - Vista previa del build
-
-## Autor
-
-Proyecto desarrollado por Matias Salazar para la pre-entrega del curso de React.
-
-## Notas Adicionales
-
-- El proyecto utiliza Vite para un desarrollo rápido y optimizado
-- Las imágenes de productos se cargan desde Unsplash
-- El estado del carrito se mantiene durante la sesión usando Context API
-- Diseño responsive que funciona en móviles, tablets y desktop
-
-## Licencia
-
-Este proyecto está disponible bajo licencia MIT.
+│   ├── Home.jsx            # Vista principal de bienvenida
+│   ├── ProductsNacionales.jsx # Catálogo con buscador, paginador y SEO (Helmet)
+│   ├── ProductDetail.jsx   # Detalle técnico y botón para añadir al carrito
+│   ├── Cart.jsx            # Checkout del carrito con sistema de cupones local
+│   ├── Login.jsx           # Formulario de ingreso de credenciales
+│   └── Perfil.jsx          # Datos del usuario autenticado
+├── firebase.js             # Configuración y conexión inicial a Firestore y Auth
+├── App.jsx                 # Enrutador principal de la app (react-router-dom)
+├── main.jsx                # Punto de entrada de la aplicación envuelto en Providers
+└── index.css               # Estilos globales complementarios
