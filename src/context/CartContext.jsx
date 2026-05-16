@@ -72,7 +72,7 @@ export const CartProvider = ({ children }) => {
     const getCartTotal = () => {
         const totalCalculado = cart.reduce((total, prod) => {
             const pre = Number(prod.precio) || 0;
-            const cant = parseInt(prod.cantidad, 10) || 0;
+            const cant = Number(prod.cantidad, 10) || 0;
             return total + (pre * cant);
         }, 0);
         return isNaN(totalCalculado) ? 0 : totalCalculado;
