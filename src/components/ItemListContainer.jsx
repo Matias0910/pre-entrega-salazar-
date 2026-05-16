@@ -1,55 +1,26 @@
-import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db, hasFirebaseConfig } from '../firebase';
-import Item from './Item';
-import productosData from '../data/productos.json';
+import Item from './Item'; // 👈 APUNTA DIRECTO A TU ARCHIVO SUELTO
 
-const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+const ItemListContainer = ({ productos }) => {
+    const listaProductos = productos || [];
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (!hasFirebaseConfig) {
-        setProducts(productosData);
-        setLoading(false);
-        setError('Firebase no está configurado. Mostrando datos locales.');
-        return;
-      }
-
-      try {
-        const querySnapshot = await getDocs(collection(db, 'productos'));
-        const productsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setProducts(productsData);
-      } catch (fetchError) {
-        setError('No se pudieron cargar los productos desde Firebase. Mostrando datos locales.');
-        setProducts(productosData);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return <div>Cargando productos...</div>;
-  }
-
-  return (
-    <>
-      {error && <div className="error-message">{error}</div>}
-      <div className="products-grid">
-        {products.map(product => (
-          <Item key={product.id} product={product} />
-        ))}
-      </div>
-    </>
-  );
+    return (
+        <div className="container py-2">
+            <div className="row">
+                {listaProductos.length > 0 ? (
+                    listaProductos.map(prod => (
+                        <div key={prod.id} className="col-12 col-md-6 col-lg-4 mb-4">
+                            <Item {...prod} />
+                        </div>
+                    ))
+                ) : (
+                    <div className="col-12 text-center text-warning mt-5">
+                        <h4>No se encontraron productos</h4>
+                        <p>Intentá con otro término o borrá el campo de búsqueda.</p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default ItemListContainer;

@@ -4,22 +4,22 @@
   padding: 2rem;
   text-align: center;
   font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
-  color: #2c3e50;
+  background-color: transparent;
+  color: #f1f7ff;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #2c3e50;
+  background-color: #0d47a1;
+  color: #f1f7ff;
 }
 
 header {
-  background-color: #2196F3;
+  background-color: #0b3b91;
   color: white;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 nav {
@@ -31,7 +31,7 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: #4CAF50;
   text-decoration: none;
   margin: 0 1rem;
   padding: 0.5rem 1rem;
@@ -40,7 +40,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #34495e;
+  background-color: #388E3C;
 }
 
 main {
@@ -49,7 +49,7 @@ main {
 }
 
 footer {
-  background-color: #34495e;
+  background-color: #0a2c6d;
   color: white;
   padding: 2rem;
   text-align: center;
@@ -126,12 +126,12 @@ footer {
 }
 
 .product-card {
-  background-color: #ffffff;
+  background-color: #1e3a8a;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s;
-  color: #333;
+  color: #f1f7ff;
   max-width: 300px;
   text-align: center;
 }
@@ -185,6 +185,87 @@ button {
 
 button:hover {
   background-color: #2980b9;
+}
+
+.cupones-admin {
+  padding: 2rem;
+}
+
+.cupones-panel {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+.cupones-form-section,
+.cupones-list-section {
+  background-color: #1e3a8a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cupones-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.cupones-form label {
+  display: grid;
+  text-align: left;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.cupones-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.cupones-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.cupon-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background-color: #0f172a;
+}
+
+.cupon-card strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cupon-card p {
+  margin: 0;
+  color: #555;
+}
+
+.error-message {
+  padding: 0.75rem 1rem;
+  background-color: #fce4e4;
+  border: 1px solid #f5c2c2;
+  color: #a93226;
+  border-radius: 8px;
+}
+
+.success-message {
+  padding: 0.75rem 1rem;
+  background-color: #e6f4ea;
+  border: 1px solid #a8d5b4;
+  color: #1e6b2b;
+  border-radius: 8px;
 }
 
 .cart-widget {

@@ -1,11 +1,17 @@
-import Header from './Header';
+import { Outlet } from 'react-router-dom';
+import Header from './Header'; // O como se llame tu componente de arriba
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      
+      {/* ⬇️ ESTO ES LO QUE TE FALTA ⬇️ */}
+      <main className="container my-4" style={{ minHeight: '80vh' }}>
+        <Outlet /> 
+      </main>
+      
       <Footer />
     </div>
   );

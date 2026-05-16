@@ -1,79 +1,95 @@
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { useParams, Link } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import { useCart } from '../context/CartContext';
-import { db, hasFirebaseConfig } from '../firebase';
-import productosData from '../data/productos.json';
+import { FaShoppingCart, FaArrowLeft } from 'react-icons/fa';
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
-  const { addToCart } = useCart();
+    const { id } = useParams();
+    const [producto, setProducto] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [cantidad, setCantidad] = useState(1);
+    const { addToCart } = useCart();
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      if (!hasFirebaseConfig) {
-        const localProduct = productosData.find(p => p.id === parseInt(id, 10));
-        setProduct(localProduct);
-        setLoading(false);
-        if (!localProduct) {
-          setError('Producto no encontrado en datos locales.');
-        }
-        return;
-      }
+    useEffect(() => {
+        const getProducto = async () => {
+            try {
+                const docRef = doc(db, "productos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setProducto({ id: docSnap.id, ...docSnap.data() });
+                }
+                setLoading(false);
+            } catch (error) {
+                window.console.error("Error al traer el detalle:", error);
+                setLoading(false);
+            }
+        };
+        getProducto();
+    }, [id]);
 
-      try {
-        const querySnapshot = await getDocs(collection(db, 'productos'));
-        const productsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        const foundProduct = productsData.find(
-          p => p.id === id || p.id === parseInt(id, 10) || p.id === id.toString()
-        );
-        if (foundProduct) {
-          setProduct(foundProduct);
-        } else {
-          setError('Producto no encontrado.');
-        }
-      } catch (fetchError) {
-        const localProduct = productosData.find(p => p.id === parseInt(id, 10));
-        setProduct(localProduct);
-        setError('No se pudo cargar el producto desde Firebase. Mostrando datos locales.');
-      } finally {
-        setLoading(false);
-      }
+    const handleAgregar = () => {
+        if (!producto) return;
+
+        // Pasamos las propiedades exactas de tu Firebase (imagen en singular, precio como Number)
+        const itemParaCarrito = {
+            id: producto.id,
+            nombre: producto.nombre || 'Producto Tecnológico',
+            precio: Number(producto.precio) || 0,
+            imagen: producto.imagen || ''
+        };
+
+        addToCart(itemParaCarrito, parseInt(cantidad, 10) || 1);
+        window.alert("¡Producto añadido al carrito!");
     };
 
-    fetchProduct();
-  }, [id]);
+    if (loading) return <div className="text-center mt-5 text-white"><h3>Cargando detalles...</h3></div>;
+    if (!producto) return <div className="text-center mt-5 text-white"><h3>El producto no existe.</h3></div>;
 
-  const handleAddToCart = () => {
-    if (!product) return;
-    addToCart(product);
-    setMessage(`¡${product.nombre} agregado al carrito!`);
-  };
+    return (
+        <div className="container py-5 text-white">
+            <Link to="/productos" className="btn btn-outline-light mb-4 rounded-pill">
+                <FaArrowLeft className="me-2" /> Volver al catálogo
+            </Link>
 
-  if (loading) return <div>Cargando...</div>;
-  if (!product) return <div>{error || 'Producto no encontrado.'}</div>;
+            <div className="row g-5 align-items-center bg-dark p-4 rounded-3 shadow">
+                <div className="col-12 col-md-6 text-center">
+                    <img 
+                        src={producto.imagen || 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500'} 
+                        alt={producto.nombre} 
+                        className="img-fluid rounded shadow bg-light"
+                        style={{ maxHeight: '400px', objectFit: 'cover' }}
+                    />
+                </div>
+                <div className="col-12 col-md-6">
+                    <h1 className="fw-bold mb-2">{producto.nombre}</h1>
+                    <h2 className="text-success fw-bold mb-4">${(Number(producto.precio) || 0).toLocaleString()}</h2>
+                    <p className="lead mb-4">{producto.descripcion || 'Sin descripción disponible.'}</p>
+                    
+                    <div className="d-flex align-items-center gap-3 mb-4" style={{ maxWidth: '200px' }}>
+                        <label htmlFor="cantidad" className="form-label mb-0">Cantidad:</label>
+                        <input 
+                            type="number" 
+                            id="cantidad" 
+                            className="form-control text-center" 
+                            min="1" 
+                            max={producto.stock || 10}
+                            value={cantidad} 
+                            onChange={(e) => {
+                                const valorInput = parseInt(e.target.value, 10);
+                                setCantidad(isNaN(valorInput) || valorInput < 1 ? 1 : valorInput);
+                            }}
+                        />
+                    </div>
 
-  return (
-    <div style={{ display: 'flex', gap: '2rem', padding: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-      <img src={product.imagen} alt={product.nombre} style={{ width: '400px', maxWidth: '100%', height: '400px', objectFit: 'cover', borderRadius: '8px' }} />
-      <div style={{ flex: 1, minWidth: '300px' }}>
-        <h1>{product.nombre}</h1>
-        <p style={{ fontSize: '1.2rem', color: '#666', margin: '1rem 0' }}>{product.descripcion}</p>
-        <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#2c3e50' }}>${product.precio}</p>
-        <p style={{ margin: '0.5rem 0' }}>Stock disponible: {product.stock}</p>
-        <button onClick={handleAddToCart} style={{ marginTop: '1rem', padding: '0.5rem 1rem', backgroundColor: '#27ae60', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Agregar al Carrito</button>
-        {message && <p style={{ color: '#27ae60', marginTop: '1rem', fontWeight: 'bold', fontSize: '1.1rem' }}>{message}</p>}
-        {error && <p style={{ color: '#e74c3c', marginTop: '1rem' }}>{error}</p>}
-      </div>
-    </div>
-  );
+                    <button className="btn btn-primary btn-lg rounded-pill px-4" onClick={handleAgregar}>
+                        <FaShoppingCart className="me-2" /> Comprar
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default ProductDetail;

@@ -1,6 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from "firebase/auth"; // Importamos el módulo de Auth
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -21,9 +21,13 @@ const hasFirebaseConfig = Boolean(
 );
 
 let db = null;
+let auth = null; // 1. Definimos auth como nulo al principio
+
 if (hasFirebaseConfig) {
   const app = initializeApp(firebaseConfig);
   db = getFirestore(app);
+  auth = getAuth(app); // 2. Lo inicializamos adentro del if
 }
 
-export { db, hasFirebaseConfig };
+// 3. Exportamos todo junto
+export { db, auth, hasFirebaseConfig };
