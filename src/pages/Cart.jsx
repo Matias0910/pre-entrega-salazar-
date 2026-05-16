@@ -64,7 +64,7 @@ if (codigoLimpio === "TECHSTORE20") { // <--- Cambiás la palabra acá
                 <div className="col-12 col-lg-8">
                     {cart.map(prod => {
                         const precioUnitario = Number(prod.precio) || 0;
-                        const cantidadItem = parseInt(prod.cantidad, 10) || 0;
+                        const cantidadItem = Number(prod.cantidad, 10) || 0;
                         const subtotalItem = precioUnitario * cantidadItem;
                         const fotoProducto = prod.imagen || 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500';
 
