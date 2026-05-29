@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useCart } from '../context/CartContext';
-import { FaShoppingCart, FaArrowLeft } from 'react-icons/fa';
+import { FaShoppingCart, FaArrowLeft, FaMinus, FaPlus } from 'react-icons/fa';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -67,24 +67,31 @@ const ProductDetail = () => {
                     <h2 className="text-success fw-bold mb-4">${(Number(producto.precio) || 0).toLocaleString()}</h2>
                     <p className="lead mb-4">{producto.descripcion || 'Sin descripción disponible.'}</p>
                     
-                    <div className="d-flex align-items-center gap-3 mb-4" style={{ maxWidth: '200px' }}>
-                        <label htmlFor="cantidad" className="form-label mb-0">Cantidad:</label>
-                        <input 
-                            type="number" 
-                            id="cantidad" 
-                            className="form-control text-center" 
-                            min="1" 
-                            max={producto.stock || 10}
-                            value={cantidad} 
-                            onChange={(e) => {
-                                const valorInput = parseInt(e.target.value, 10);
-                                setCantidad(isNaN(valorInput) || valorInput < 1 ? 1 : valorInput);
-                            }}
-                        />
+                    <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mb-4">
+                        <span className="fw-semibold text-white-50">Cantidad:</span>
+                        <div className="d-flex align-items-center gap-2 border border-light rounded-pill px-2 py-1 bg-dark-subtle">
+                            <button
+                                type="button"
+                                className="btn btn-sm btn-outline-light rounded-circle"
+                                onClick={() => setCantidad(prev => Math.max(1, prev - 1))}
+                                aria-label="Disminuir cantidad"
+                            >
+                                <FaMinus size={12} />
+                            </button>
+                            <span className="fw-bold text-white px-2" style={{ minWidth: '2rem', textAlign: 'center' }}>{cantidad}</span>
+                            <button
+                                type="button"
+                                className="btn btn-sm btn-outline-light rounded-circle"
+                                onClick={() => setCantidad(prev => Math.min(producto.stock || 10, prev + 1))}
+                                aria-label="Aumentar cantidad"
+                            >
+                                <FaPlus size={12} />
+                            </button>
+                        </div>
                     </div>
 
                     <button className="btn btn-primary btn-lg rounded-pill px-4" onClick={handleAgregar}>
-                        <FaShoppingCart className="me-2" /> Comprar
+                        <FaShoppingCart className="me-2" /> Agregar al carrito
                     </button>
                 </div>
             </div>
