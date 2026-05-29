@@ -4,7 +4,11 @@ Bienvenido a la versión final de **TechStore**, un eCommerce funcional, respons
 
 ## 🚀 URL de Producción (Sitio en Vivo)
 El proyecto se encuentra desplegado y listo para producción en:
-👉 **[TechStore en Vercel](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)** *(actualizá este enlace si desplegás una nueva versión final)*
+👉 **[TechStore en Vercel](https://pre-entrega-salazar-y5dd.vercel.app/)**
+
+## 📌 Repositorio en GitHub
+Repositorio oficial del proyecto:
+👉 **https://github.com/Matias0910/pre-entrega-salazar-**
 
 ---
 
