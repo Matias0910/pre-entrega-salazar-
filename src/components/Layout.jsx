@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
 import { useCart } from '../context/CartContext'; 
 import { FaUser, FaSignOutAlt, FaTools, FaShoppingCart } from 'react-icons/fa';
+import Footer from './Footer';
 
 const Layout = () => {
     const { user, logout } = useAuth(); 
@@ -122,6 +123,8 @@ const Layout = () => {
             <main>
                 <Outlet />
             </main>
+
+            <Footer />
         </div>
     );
 };

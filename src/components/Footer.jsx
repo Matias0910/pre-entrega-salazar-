@@ -23,7 +23,13 @@ const Footer = () => {
           id: doc.id,
           ...doc.data()
         }));
-        setTeam(teamDataFromFirebase);
+
+        if (teamDataFromFirebase.length > 0) {
+          setTeam(teamDataFromFirebase);
+        } else {
+          setTeam(teamData);
+          setError('No hay datos del equipo en Firebase. Mostrando equipo local.');
+        }
       } catch (fetchError) {
         setError('No se pudo cargar el equipo desde Firebase. Mostrando datos locales.');
         setTeam(teamData);

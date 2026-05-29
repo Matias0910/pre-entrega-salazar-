@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaTicketAlt } from 'react-icons/fa';
+import { FaShoppingBag, FaTicketAlt } from 'react-icons/fa';
 
 const Cart = () => {
     const { cart, removeItem, updateQuantity, clearCart, getCartTotal } = useCart();
@@ -34,22 +34,30 @@ const Cart = () => {
 
         const codigoLimpio = codigoCupon.trim().toUpperCase();
 
-       // 🎫 ACÁ ES DONDE JUGÁS VOS CON LAS PALABRAS
-if (codigoLimpio === "TECHSTORE20") { // <--- Cambiás la palabra acá
-    const ahorro = subtotalGeneral * 0.20; // 20% de descuento
-    setDescuento(ahorro);
-    setCuponAplicado("TECHSTORE20 (20% OFF)");
+        if (codigoLimpio === "TECHSTORE20") {
+            const ahorro = subtotalGeneral * 0.20;
+            setDescuento(ahorro);
+            setCuponAplicado("TECHSTORE20 (20% OFF)");
+            return;
+        }
 
-} else if (codigoLimpio === "MATIAS") { // <--- Cambiás la otra acá
-    const ahorro = 3000; // $3000 fijos de regalo
-    setDescuento(ahorro > subtotalGeneral ? subtotalGeneral : ahorro);
-    setCuponAplicado("CUPÓN MATIAS ($3.000 Fijo)");
+        if (codigoLimpio === "MATIAS") {
+            const ahorro = 3000;
+            setDescuento(ahorro > subtotalGeneral ? subtotalGeneral : ahorro);
+            setCuponAplicado("CUPÓN MATIAS ($3.000 Fijo)");
+            return;
+        }
 
-} else if (codigoLimpio === "PROFE") { // <--- ¡Y podés meter todos los que quieras sumando otra condición!
-    const ahorro = subtotalGeneral * 0.50; // 50% de descuento para el corrector jajaja
-    setDescuento(ahorro);
-    setCuponAplicado("CUPÓN PROFE (50% OFF)");
-}
+        if (codigoLimpio === "PROFE") {
+            const ahorro = subtotalGeneral * 0.50;
+            setDescuento(ahorro);
+            setCuponAplicado("CUPÓN PROFE (50% OFF)");
+            return;
+        }
+
+        setDescuento(0);
+        setCuponAplicado("");
+        setErrorCupon("Cupón inválido. Probá con TECHSTORE20, MATIAS o PROFE.");
     };
 
     // Calcular el total final restando el descuento
