@@ -6,7 +6,6 @@ import { FaShoppingBag, FaTicketAlt } from 'react-icons/fa';
 const Cart = () => {
     const { cart, removeItem, updateQuantity, clearCart, getCartTotal } = useCart();
     
-    // ESTADOS PARA EL CUPÓN
     const [codigoCupon, setCodigoCupon] = useState("");
     const [descuento, setDescuento] = useState(0); // Guarda el valor a restar
     const [cuponAplicado, setCuponAplicado] = useState(""); // Guarda el nombre del cupón activo
@@ -27,7 +26,6 @@ const Cart = () => {
 
     const subtotalGeneral = Number(getCartTotal()) || 0;
 
-    // LÓGICA PARA VALIDAR EL CUPÓN
     const handleAplicarCupon = (e) => {
         e.preventDefault();
         setErrorCupon("");
@@ -60,7 +58,6 @@ const Cart = () => {
         setErrorCupon("Cupón inválido. Probá con TECHSTORE20, MATIAS o PROFE.");
     };
 
-    // Calcular el total final restando el descuento
     const totalConDescuento = subtotalGeneral - descuento;
 
     return (
@@ -68,7 +65,6 @@ const Cart = () => {
             <h1 className="text-center fw-bold mb-5">Tu Carrito de Compras</h1>
 
             <div className="row g-4">
-                {/* LISTADO DE ITEMS */}
                 <div className="col-12 col-lg-8">
                     {cart.map(prod => {
                         const precioUnitario = Number(prod.precio) || 0;
@@ -103,7 +99,6 @@ const Cart = () => {
                     })}
                 </div>
 
-                {/* RESUMEN TOTAL DE COMPRA CON SECCIÓN DE CUPONES */}
                 <div className="col-12 col-lg-4">
                     <div className="card border-0 shadow p-4 text-dark mb-4" style={{ backgroundColor: '#ffffff', borderRadius: '15px' }}>
                         <h4 className="fw-bold text-center border-bottom pb-3 mb-3">Resumen de Compra</h4>
@@ -113,7 +108,6 @@ const Cart = () => {
                             <span className="fw-bold">${subtotalGeneral.toLocaleString()}</span>
                         </div>
 
-                        {/* Muestra el descuento aplicado si existe */}
                         {descuento > 0 && (
                             <div className="d-flex justify-content-between mb-2 text-success fw-semibold">
                                 <span>Descuento ({cuponAplicado}):</span>
@@ -142,7 +136,6 @@ const Cart = () => {
                         </div>
                     </div>
 
-                    {/* TARJETA PARA INGRESAR EL CUPÓN */}
                     <div className="card border-0 shadow p-4 text-dark" style={{ backgroundColor: '#ffffff', borderRadius: '15px' }}>
                         <h5 className="fw-bold mb-3"><FaTicketAlt className="text-primary me-2" /> ¿Tenés un cupón?</h5>
                         <form onSubmit={handleAplicarCupon} className="d-flex gap-2">

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Item = (props) => {
-    // Captura las propiedades de manera directa
     const prod = props || {};
     
     const id = prod.id || '';

@@ -12,7 +12,6 @@ const Products = () => {
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                // Apunta a tu colección real de Firestore "productos"
                 const querySnapshot = await getDocs(collection(db, "productos"));
                 const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setProductos(data);
@@ -25,7 +24,6 @@ const Products = () => {
         fetchProductos();
     }, []);
 
-    // Filtro interactivo de búsqueda
     const productosFiltrados = productos.filter((prod) => {
         const nombre = prod.name || prod.nombre || "";
         return nombre.toLowerCase().includes(busqueda.toLowerCase());

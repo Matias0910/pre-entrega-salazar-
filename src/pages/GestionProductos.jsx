@@ -41,7 +41,6 @@ const GestionProductos = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validaciones: Usamos window.alert para que VS Code sepa de dónde viene
         if (nombre.trim() === "" || Number(precio) <= 0) {
             window.confirm("El nombre es obligatorio y el precio debe ser mayor a 0");
             return;
@@ -67,7 +66,6 @@ const GestionProductos = () => {
             }
             setNombre(""); setPrecio(""); setCategoria(""); setStock(""); setDescripcion(""); setImagen("");
         } catch (error) {
-            // Usamos un log más "limpio" para que no chille el linter
             const errorMsg = error;
             return errorMsg;
         }

@@ -1,10 +1,10 @@
-# ⚡ TechStore - Trabajo Final de React 🇦🇷🛒
+# ⚡ TechStore - Entrega Final 🇦🇷🛒
 
-¡Bienvenido a la versión final de **TechStore**! Este proyecto es la entrega final optimizada para el curso de React de **Talento Lab**. Se trata de un eCommerce completamente funcional, responsivo, accesible y administrable en tiempo real gracias a la integración con Firebase.
+Bienvenido a la versión final de **TechStore**, un eCommerce funcional, responsivo y administrable con Firebase, preparado para la entrega final del curso de React.
 
 ## 🚀 URL de Producción (Sitio en Vivo)
 El proyecto se encuentra desplegado y listo para producción en:
-👉 **[TechStore en Vercel](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)** *(Nota: Recordá actualizar este link si re-desplegaste la versión final)*
+👉 **[TechStore en Vercel](https://pre-entrega-salazar-y5dd-sy64a7v2h-matias-projects-5dcaa1cd.vercel.app)** *(actualizá este enlace si desplegás una nueva versión final)*
 
 ---
 

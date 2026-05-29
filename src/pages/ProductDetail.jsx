@@ -3,13 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useCart } from '../context/CartContext';
-import { FaShoppingCart, FaArrowLeft, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaShoppingCart, FaArrowLeft } from 'react-icons/fa';
 
 const ProductDetail = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [cantidad, setCantidad] = useState(1);
     const { addToCart } = useCart();
 
     useEffect(() => {
@@ -32,7 +31,6 @@ const ProductDetail = () => {
     const handleAgregar = () => {
         if (!producto) return;
 
-        // Pasamos las propiedades exactas de tu Firebase (imagen en singular, precio como Number)
         const itemParaCarrito = {
             id: producto.id,
             nombre: producto.nombre || 'Producto Tecnológico',
@@ -40,7 +38,7 @@ const ProductDetail = () => {
             imagen: producto.imagen || ''
         };
 
-        addToCart(itemParaCarrito, parseInt(cantidad, 10) || 1);
+        addToCart(itemParaCarrito, 1);
         window.alert("¡Producto añadido al carrito!");
     };
 
@@ -66,29 +64,6 @@ const ProductDetail = () => {
                     <h1 className="fw-bold mb-2">{producto.nombre}</h1>
                     <h2 className="text-success fw-bold mb-4">${(Number(producto.precio) || 0).toLocaleString()}</h2>
                     <p className="lead mb-4">{producto.descripcion || 'Sin descripción disponible.'}</p>
-                    
-                    <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mb-4">
-                        <span className="fw-semibold text-white-50">Cantidad:</span>
-                        <div className="d-flex align-items-center gap-2 border border-light rounded-pill px-2 py-1 bg-dark-subtle">
-                            <button
-                                type="button"
-                                className="btn btn-sm btn-outline-light rounded-circle"
-                                onClick={() => setCantidad(prev => Math.max(1, prev - 1))}
-                                aria-label="Disminuir cantidad"
-                            >
-                                <FaMinus size={12} />
-                            </button>
-                            <span className="fw-bold text-white px-2" style={{ minWidth: '2rem', textAlign: 'center' }}>{cantidad}</span>
-                            <button
-                                type="button"
-                                className="btn btn-sm btn-outline-light rounded-circle"
-                                onClick={() => setCantidad(prev => Math.min(producto.stock || 10, prev + 1))}
-                                aria-label="Aumentar cantidad"
-                            >
-                                <FaPlus size={12} />
-                            </button>
-                        </div>
-                    </div>
 
                     <button className="btn btn-primary btn-lg rounded-pill px-4" onClick={handleAgregar}>
                         <FaShoppingCart className="me-2" /> Agregar al carrito

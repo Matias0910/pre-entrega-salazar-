@@ -1,7 +1,8 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
   font-family: 'Arial', sans-serif;
   background-color: transparent;
@@ -13,6 +14,7 @@ body {
   padding: 0;
   background-color: #0d47a1;
   color: #f1f7ff;
+  overflow-x: hidden;
 }
 
 header {
@@ -45,13 +47,13 @@ nav a:hover {
 
 main {
   min-height: 70vh;
-  padding: 2rem;
+  padding: 0 0 1rem;
 }
 
 footer {
   background-color: #0a2c6d;
   color: white;
-  padding: 2rem;
+  padding: 1rem 1rem 2rem;
   text-align: center;
 }
 
@@ -119,10 +121,10 @@ footer {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
-  padding: 2rem;
-  justify-items: center;
+  padding: 1rem;
+  justify-items: stretch;
 }
 
 .product-card {
@@ -132,7 +134,7 @@ footer {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s;
   color: #f1f7ff;
-  max-width: 300px;
+  max-width: 100%;
   text-align: center;
 }
 
@@ -295,6 +297,39 @@ button:hover {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 992px) {
+  main {
+    padding: 0 0.75rem 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 0;
+  }
+
+  main {
+    padding: 0 0.5rem 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    padding: 0.25rem 0;
+  }
+
+  .team-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card {
+    min-width: 0;
   }
 }
 

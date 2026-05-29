@@ -7,7 +7,6 @@ const ProtectedRoute = ({ children }) => {
     if (loading) return null; // Esperamos a que Firebase nos diga quién es el usuario
 
     if (!user) {
-        // Si no hay usuario, lo mandamos al home o al login
         return <Navigate to="/" />;
     }
 

@@ -6,7 +6,6 @@ import { FaSearch, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
-// Diseño responsivo y personalizado con Styled-components
 const SearchContainer = styled.div`
   max-width: 600px;
   margin: 20px auto 40px auto;
@@ -54,7 +53,6 @@ const ProductsNacionales = () => {
     const [loading, setLoading] = useState(true);
     const [busqueda, setBusqueda] = useState("");
     
-    // 📊 ESTADOS PARA LA PAGINACIÓN
     const [currentPage, setCurrentPage] = useState(1);
     const productosPorPagina = 6; 
 
@@ -78,13 +76,11 @@ const ProductsNacionales = () => {
         setCurrentPage(1);
     };
 
-    // 1. Filtrado por buscador
     const productosFiltrados = productos.filter((prod) => {
         const nombre = prod.nombre || prod.name || "";
         return nombre.toLowerCase().includes(busqueda.toLowerCase());
     });
 
-    // 2. Lógica matemática de Paginación
     const indexOfLastProduct = currentPage * productosPorPagina;
     const indexOfFirstProduct = indexOfLastProduct - productosPorPagina;
     const productosPaginados = productosFiltrados.slice(indexOfFirstProduct, indexOfLastProduct);

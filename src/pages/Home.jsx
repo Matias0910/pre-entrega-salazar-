@@ -11,17 +11,18 @@ const Home = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '60px 10%',
-                backgroundColor: '#003d82', // El azul de tu marca
+                padding: 'clamp(24px, 6vw, 60px) clamp(16px, 5vw, 8%)',
+                backgroundColor: '#003d82',
                 color: 'white',
                 minHeight: '500px',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                gap: '24px'
             }}>
-                <div style={{ flex: '1', minWidth: '300px', paddingRight: '20px' }}>
-                    <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '20px', lineHeight: '1.2' }}>
+                <div style={{ flex: '1 1 320px', minWidth: '0', paddingRight: '0' }}>
+                    <h1 style={{ fontSize: 'clamp(2rem, 7vw, 3.2rem)', fontWeight: 'bold', marginBottom: '20px', lineHeight: '1.1' }}>
                         TU HOGAR, TU <br /> TECNOLOGÍA.
                     </h1>
-                    <p style={{ fontSize: '1.2rem', marginBottom: '30px', opacity: '0.9' }}>
+                    <p style={{ fontSize: 'clamp(1rem, 2.8vw, 1.2rem)', marginBottom: '30px', opacity: '0.9' }}>
                         Encontrá los dispositivos que definen tu vida. <br />
                         Lo mejor en tecnología, al mejor precio.
                     </p>
@@ -43,7 +44,7 @@ const Home = () => {
                     </button>
                 </div>
 
-                <div style={{ flex: '1', minWidth: '300px', textAlign: 'right' }}>
+                <div style={{ flex: '1 1 320px', minWidth: '0', textAlign: 'right' }}>
                     {/* Imagen representativa de tecnología moderna */}
                     <img 
                         src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=800" 
@@ -58,8 +59,8 @@ const Home = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 gap: '20px',
-                padding: '50px 10%',
-                marginTop: '-50px', // Efecto de solapamiento
+                padding: 'clamp(24px, 6vw, 50px) clamp(14px, 5vw, 8%)',
+                marginTop: '0',
                 flexWrap: 'wrap'
             }}>
                 {/* Tarjeta 1 */}
@@ -87,13 +88,12 @@ const Home = () => {
     );
 };
 
-// Estilo reutilizable para las tarjetas
 const cardStyle = {
     backgroundColor: 'white',
     padding: '30px',
     borderRadius: '12px',
     textAlign: 'center',
-    width: '280px',
+    width: 'min(280px, 100%)',
     boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
     transition: 'transform 0.3s ease'
 };

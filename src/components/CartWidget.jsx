@@ -4,10 +4,8 @@ import { useCart } from '../context/CartContext';
 import { FaShoppingCart } from 'react-icons/fa'; // O el icono que uses
 
 const CartWidget = () => {
-    // Traemos la función contadora desde el contexto blindado
     const { getCartQuantity } = useCart();
     
-    // Forzamos a que sea un número entero real
     const cantidadTotal = parseInt(getCartQuantity(), 10) || 0;
 
     return (

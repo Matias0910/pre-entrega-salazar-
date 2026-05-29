@@ -11,23 +11,18 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         
-        // Validación básica antes de llamar a Firebase
         if (!email || !password) {
             window.alert("Por favor, completa todos los campos.");
             return;
         }
 
         try {
-            // Intentamos la autenticación
             await signInWithEmailAndPassword(auth, email, password);
             
-            // Si tiene éxito, redirigimos al perfil
             navigate("/perfil"); 
         } catch (error) {
-            // Mostramos el error en la consola por si necesitamos debuguear
             window.console.error("Error de Firebase:", error.code, error.message);
             
-            // Mensajes amigables según el error
             if (error.code === "auth/invalid-credential") {
                 window.alert("Email o contraseña incorrectos.");
             } else if (error.code === "auth/too-many-requests") {

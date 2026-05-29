@@ -4,7 +4,6 @@ import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 
-// IMPORTS DE TUS PAGINAS
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
@@ -13,7 +12,6 @@ import Perfil from './pages/Perfil';
 import GestionProductos from './pages/GestionProductos';
 import ProductsNacionales from './pages/ProductsNacionales';
 
-// IMPORT DE CUPONES DESDE COMPONENTS
 import GestionCupones from './components/GestionCupones'; 
 
 function App() {

@@ -10,7 +10,6 @@ const Layout = () => {
     const { getCartQuantity } = useCart(); 
     const navigate = useNavigate(); 
 
-    // Función segura para cerrar sesión y redirigir a la Home
     const handleLogout = async () => {
         try {
             await logout(); 
@@ -22,16 +21,13 @@ const Layout = () => {
 
     return (
         <div>
-            {/* BARRA DE NAVEGACIÓN PRINCIPAL */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
                 <div className="container px-3">
                     
-                    {/* LOGO DE LA TIENDA */}
                     <Link className="navbar-brand fw-bold text-info" to="/">
                         TechStore ⚡
                     </Link>
 
-                    {/* 🛒 CARRITO PARA CELULARES (Visible solo en pantallas chicas: d-lg-none) */}
                     <div className="d-flex align-items-center d-lg-none ms-auto me-2">
                         <Link className="nav-link position-relative px-3" to="/carrito" style={{ zIndex: 1100 }}>
                             <FaShoppingCart size={24} className="text-white" />
@@ -43,7 +39,6 @@ const Layout = () => {
                         </Link>
                     </div>
 
-                    {/* BOTÓN HAMBURGUESA (Para desplegar el menú en móviles) */}
                     <button 
                         className="navbar-toggler" 
                         type="button" 
@@ -56,7 +51,6 @@ const Layout = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    {/* CONTENIDO DESPLEGABLE DEL MENÚ */}
                     <div className="collapse navbar-collapse" id="navbarNav">
                         
                         {/* Links del lado izquierdo */}
@@ -64,7 +58,6 @@ const Layout = () => {
                             <Link className="nav-link" to="/">Inicio</Link>
                             <Link className="nav-link" to="/productos">Productos</Link>
                             
-                            {/* 🛠️ MENÚ PRIVADO: Solo aparece si el Admin inició sesión */}
                             {user && (
                                 <>
                                     <Link 
@@ -86,7 +79,6 @@ const Layout = () => {
                         {/* Links del lado derecho */}
                         <div className="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
                             
-                            {/* 🛒 CARRITO PARA ESCRITORIO (Se oculta en celulares: d-none d-lg-block) */}
                             <Link className="nav-link position-relative px-2 d-none d-lg-block" to="/carrito">
                                 <FaShoppingCart size={20} className="text-white" />
                                 {getCartQuantity && getCartQuantity() > 0 && (
@@ -96,7 +88,6 @@ const Layout = () => {
                                 )}
                             </Link>
 
-                            {/* ESTADO DE AUTENTICACIÓN */}
                             {user ? (
                                 <div className="d-flex flex-column flex-lg-row align-items-center gap-2 w-100 w-lg-auto">
                                     <span className="navbar-text text-light d-flex align-items-center gap-1">
@@ -119,7 +110,6 @@ const Layout = () => {
                 </div>
             </nav>
 
-            {/* RENDERIZADO DE LAS PÁGINAS */}
             <main>
                 <Outlet />
             </main>
